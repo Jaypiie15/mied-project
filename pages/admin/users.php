@@ -1,9 +1,12 @@
+<?php include '../../includes/functions.php';
+      include '../../includes/admin-session.php';
+      ?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Meat Cut Catalogue</title>
+  <title><?php echo $title?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -14,9 +17,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+      <link href="../../plugins/animate.css/animate.min.css" rel="stylesheet">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../../plugins/parsleyjs/src/parsley.css">
+            <link rel="stylesheet" href="../../build/sweetalert.css">
+    <script type="text/javascript" src="../../build/sweetalert-dev.js"></script>
+    <script type="text/javascript" src="../../build/sweetalert.min.js"></script>
+
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,9 +43,9 @@
     <!-- Logo -->
     <a href="dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>MCC</b></span>
+      <span class="logo-mini"><b><?php echo $mini?></b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>M</b>eat <b>C</b>uts <b>C</b>atalogue</span>
+      <span class="logo-lg"><?php echo $sitename?></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -54,7 +64,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $firstname?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -62,8 +72,8 @@
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                  <div class="col-xs-4">
+                    <a href="logout.php">Logout  <i class="fa fa-sign-out"></i></a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -95,22 +105,49 @@
         </li>
 
         <li>
-          <a href="meat-cuts.php">
+          <a href="#">
             <i class="fa fa-cut"></i> <span>Meat Cuts</span>
-
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="view-meatcut.php"><i class="fa fa-circle-o"></i> View Meat Cuts</a></li>
+            <li><a href="add-meatcut.php"><i class="fa fa-circle-o"></i> Add Meat Cuts</a></li>
+          </ul>
         </li>
 
-        <li>
-          <a href="users.php">
+        <li class="active treeview">
+          <a href="#">
             <i class="fa fa-users"></i> <span>Users</span>
-
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="admin.php"><i class="fa fa-circle-o"></i> Administrators</a></li>
+            <li class="active"><a href="users.php"><i class="fa fa-circle-o"></i> Add Users</a></li>
+          </ul>
         </li>
+
 
         <li>
           <a href="edit-commodity.php">
             <i class="fa fa-pencil"></i> <span>Edit Commodity</span>
+
+          </a>
+        </li>
+
+          <li>
+          <a href="edit-meatcut.php">
+            <i class="fa fa-pencil"></i> <span>Edit Meat Cut Type</span>
+
+          </a>
+        </li>
+
+          <li>
+          <a href="edit-hscode.php">
+            <i class="fa fa-pencil"></i> <span>Edit HS Code</span>
 
           </a>
         </li>
@@ -147,11 +184,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
+        <i class="fa fa-user-plus"></i> Add Users
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Add Users</li>
       </ol>
     </section>
 
@@ -161,82 +198,86 @@
       <!-- Default box -->
       <div class="box">
         <div class="box-body">
-<div class="register-box col-sm-2">
-</div>
-<div class="register-box col-sm-10">
 
+<hr>
+  <?php add_user()?>
+    <form method="post" class="form-horizontal form-label-left" id="form" data-parsley-validate>
 
-    <form method="post" class="form-horizontal form-label-left">
     <div class="item form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-6">Lastname<span class="required">*</span></label>
-    <div class="col-md-12 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Lastname" name="last">
+           <label class="control-label col-md-3 col-sm-3 col-xs-12">Lastname <span class="required">*</span></label>
+    <div class="col-md-6 col-sm-6 col-xs-12"> 
+        <input type="text" class="form-control col-md-7 col-xs-12 " placeholder="Lastname" name="last" required  data-parsley-length="[2, 20]"  data-parsley-pattern="^[a-zA-Z ]+$">
 
-      </div>
-      </div>
+    </div>
+    </div>
     
     <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-6">Firstname<span class="required">*</span></label>
-    <div class="col-md-12 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Firstname" name="first">
+    <div class="col-md-6 col-sm-6 col-xs-12"> 
+        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Firstname" name="first" required  data-parsley-length="[2, 10]"  data-parsley-pattern="^[a-zA-Z ]+$">
 
       </div>
       </div>
 
     <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-6">Middlename<span class="required">*</span></label>
-    <div class="col-md-12 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Middlename" name="middle">
+    <div class="col-md-6 col-sm-6 col-xs-12"> 
+        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Middlename" name="middle" required  data-parsley-length="[2, 20]"  data-parsley-pattern="^[a-zA-Z ]+$">
 
       </div>
       </div>
 
     <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-6">Username<span class="required">*</span></label>
-    <div class="col-md-12 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Username" name="user">
+    <div class="col-md-6 col-sm-6 col-xs-12"> 
+        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Username" name="user" required>
 
       </div>
       </div>
 
     <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-6">Password<span class="required">*</span></label>
-    <div class="col-md-12 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Password" name="pass">
+    <div class="col-md-6 col-sm-6 col-xs-12"> 
+        <input type="password" class="form-control col-md-7 col-xs-12" placeholder="Password" name="pass" id="pass" required  data-parsley-length="[8, 20]">
 
       </div>
       </div>
 
     <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-6">Repeat Password<span class="required">*</span></label>
-    <div class="col-md-12 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Repeat Password" name="cpass">
+    <div class="col-md-6 col-sm-6 col-xs-12"> 
+        <input type="password" class="form-control col-md-7 col-xs-12" placeholder="Repeat Password" name="cpass" required  data-parsley-length="[8, 20]" data-parsley-equalto="#pass">
 
       </div>
       </div>
 
     <div class="item form-group">
-    <label class="control-label col-md-3 col-sm-3 col-xs-6">Role<span class="required">*</span></label>
-    <div class="col-md-12 col-sm-6 col-xs-12">
-                              <select name="role" class="form-control" required>
-                                            <option value="">--Select role</option>
-                                            <option value="0">Admin</option>
-                                            <option value="1">User</option>
-                          </select>
+            <label class="control-label col-md-3 col-sm-3 col-xs-6">Role<span class="required">*</span></label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+                  <select name="role" class="form-control" required>
+                    <option value="">--Select role</option>
+                    <option value="0">Admin</option>
+                    <option value="1">User</option>
+                   </select>
         </div>
-        </div> 
+    </div> 
+
+        <div class="col-md-6 col-md-offset-3">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" name="btn-register">Register</button>
+        </div>
+      
+  
       <div class="row">
 
         <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
-        </div>
+     
         <!-- /.col -->
       </div>
+
     </form>
 
 
-  </div>
+ 
   <!-- /.form-box -->
 
         </div>
@@ -252,9 +293,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>National Meat Inspection Services
-    Meat Cuts Catalogue
-    @ <?php echo date('Y')?></strong>
+    <strong><?php echo $footer?></strong>
   </footer>
 
   <!-- Control Sidebar -->
@@ -277,6 +316,13 @@
 <!-- AdminLTE App -->
 <script src="../../dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
+<script src="../../plugins/parsleyjs/parsley.js"></script>
+<script src="../../plugins/parsleyjs/dist/parsley.min.js"></script>
 <script src="../../dist/js/demo.js"></script>
+
+
+<script type="text/javascript">
+  $('#form').parsley();
+</script>
 </body>
 </html>

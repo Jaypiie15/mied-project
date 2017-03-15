@@ -1,9 +1,13 @@
+<?php include '../../includes/functions.php';
+      include '../../includes/admin-session.php';
+      include '../../includes/counting.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Meat Cut Catalogue</title>
+  <title><?php echo $title?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -33,9 +37,9 @@
     <!-- Logo -->
     <a href="dashboard.php" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>MCC</b></span>
+      <span class="logo-mini"><b><?php echo $mini?></b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>M</b>eat <b>C</b>uts <b>C</b>atalogue</span>
+      <span class="logo-lg"><?php echo $sitename?></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -54,7 +58,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <span class="hidden-xs"><?php echo $firstname?> </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -62,8 +66,8 @@
               <!-- Menu Body -->
               <li class="user-body">
                 <div class="row">
-                  <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                  <div class="col-xs-4">
+                    <a href="logout.php">Logout  <i class="fa fa-sign-out"></i></a>
                   </div>
                 </div>
                 <!-- /.row -->
@@ -87,7 +91,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
 
-        <li>
+        <li class="active">
           <a href="dashboard.php">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
 
@@ -95,22 +99,48 @@
         </li>
 
         <li>
-          <a href="meat-cuts.php">
+          <a href="#">
             <i class="fa fa-cut"></i> <span>Meat Cuts</span>
-
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="view-meatcut.php"><i class="fa fa-circle-o"></i> View Meat Cuts</a></li>
+            <li><a href="add-meatcut.php"><i class="fa fa-circle-o"></i> Add Meat Cuts</a></li>
+          </ul>
         </li>
 
         <li>
-          <a href="users.php">
+          <a href="#">
             <i class="fa fa-users"></i> <span>Users</span>
-
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="admin.php"><i class="fa fa-circle-o"></i> Administrators</a></li>
+            <li><a href="users.php"><i class="fa fa-circle-o"></i> Add Users</a></li>
+          </ul>
         </li>
 
         <li>
           <a href="edit-commodity.php">
             <i class="fa fa-pencil"></i> <span>Edit Commodity</span>
+
+          </a>
+        </li>
+
+          <li>
+          <a href="edit-meatcut.php">
+            <i class="fa fa-pencil"></i> <span>Edit Meat Cut Type</span>
+
+          </a>
+        </li>
+
+          <li>
+          <a href="edit-hscode.php">
+            <i class="fa fa-pencil"></i> <span>Edit HS Code</span>
 
           </a>
         </li>
@@ -125,6 +155,13 @@
         <li>
           <a href="edit-title.php">
             <i class="fa fa-pencil"></i> <span>Edit title</span>
+
+          </a>
+        </li>
+
+        <li>
+          <a href="faqs.php">
+            <i class="fa fa-pencil"></i> <span>Edit FAQ's</span>
 
           </a>
         </li>
@@ -147,11 +184,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Blank page
+        Dashboard
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Dashboard</li>
       </ol>
     </section>
 
@@ -162,6 +199,68 @@
       <div class="box">
 
         <div class="box-body">
+
+        <!-- 1st row -->
+        <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green"><i class="ion ion-folder"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">No. of Commodity</span>
+              <span class="info-box-number"><?php echo $com_count?></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red"><i class="ion ion-folder"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">No. of MeatCut type</span>
+              <span class="info-box-number"><?php echo $cut_count?></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-earth"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">No. of Countries</span>
+              <span class="info-box-number"><?php echo $country_count?></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-folder"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Overall data stored</span>
+              <span class="info-box-number"><?php echo $total_count?></span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      </div>
+
+
 
         </div>
         <!-- /.box-body -->
@@ -176,9 +275,7 @@
   <!-- /.content-wrapper -->
 
   <footer class="main-footer">
-    <strong>National Meat Inspection Services
-    Meat Cuts Catalogue
-    @ <?php echo date('Y')?></strong>
+    <strong><?php echo $footer?></strong>
   </footer>
 
   <!-- Control Sidebar -->

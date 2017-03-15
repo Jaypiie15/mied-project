@@ -1,9 +1,11 @@
+<?php include '../includes/functions.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Log in</title>
+  <title>Meat Cut Catalogue</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -16,6 +18,10 @@
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="../plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="../plugins/parsleyjs/src/parsley.css">
+  <link rel="stylesheet" href="../build/sweetalert.css">
+    <script type="text/javascript" src="../build/sweetalert-dev.js"></script>
+    <script type="text/javascript" src="../build/sweetalert.min.js"></script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,21 +38,21 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Please sign in to start</p>
-
-    <form method="post">
+    <?php login()?>
+    <form method="post" data-parsley-validate>
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Username">
+        <input type="text" class="form-control" placeholder="Username" name="username" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
 
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat" name="btn-login">Sign In</button>
         </div>
         <!-- /.col -->
       </div>
@@ -65,6 +71,8 @@
 <script src="../bootstrap/js/bootstrap.min.js"></script>
 <!-- iCheck -->
 <script src="../plugins/iCheck/icheck.min.js"></script>
+<script src="../plugins/parsleyjs/parsley.js"></script>
+<script src="../plugins/parsleyjs/dist/parsley.min.js"></script>
 <script>
   $(function () {
     $('input').iCheck({
