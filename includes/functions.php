@@ -651,6 +651,26 @@ function add_faq(){
 		<?php
 		}
 	}
+
+	if(isset($_POST['btn-modify'])){
+		$id = $db->real_escape_string($_POST['id']);
+		$que = $db->real_escape_string($_POST['que']);
+		$ans = $db->real_escape_string($_POST['ans']);
+
+		$query = $db->query("UPDATE faq SET question = '$que', answer = '$ans' WHERE id = '$id'");
+				?>
+				<script type="text/javascript">
+			swal({   
+				title: "SUCCESS",  
+			 	text: "Updated Successfully",
+				timer: 4000, 
+			 	type: 'success',  
+			 	showConfirmButton: false 
+				});
+			setTimeout("location.href = 'faqs.php'",2000);
+		</script>
+		<?php
+	}
 }
 
 function update_meats(){

@@ -206,7 +206,7 @@
     <div class="item form-group">
            <label class="control-label col-md-3 col-sm-3 col-xs-12">Lastname <span class="required">*</span></label>
     <div class="col-md-6 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12 " placeholder="Lastname" name="last" required  data-parsley-length="[2, 20]"  data-parsley-pattern="^[a-zA-Z ]+$">
+        <input type="text" class="form-control col-md-7 col-xs-12 " placeholder="Lastname" name="last" required  data-parsley-length="[2, 20]"  data-parsley-pattern="^[a-zA-Z ]+$" data-parsley-pattern-message="Invalid chracters. Please input Alphabet only">
 
     </div>
     </div>
@@ -214,7 +214,7 @@
     <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-6">Firstname<span class="required">*</span></label>
     <div class="col-md-6 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Firstname" name="first" required  data-parsley-length="[2, 10]"  data-parsley-pattern="^[a-zA-Z ]+$">
+        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Firstname" name="first" required  data-parsley-length="[2, 10]"  data-parsley-pattern="^[a-zA-Z ]+$" data-parsley-pattern-message="Invalid chracters. Please input Alphabet only">
 
       </div>
       </div>
@@ -222,7 +222,7 @@
     <div class="item form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-6">Middlename<span class="required">*</span></label>
     <div class="col-md-6 col-sm-6 col-xs-12"> 
-        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Middlename" name="middle" required  data-parsley-length="[2, 20]"  data-parsley-pattern="^[a-zA-Z ]+$">
+        <input type="text" class="form-control col-md-7 col-xs-12" placeholder="Middlename" name="middle" required  data-parsley-length="[2, 20]"  data-parsley-pattern="^[a-zA-Z ]+$" data-parsley-pattern-message="Invalid chracters. Please input Alphabet only">
 
       </div>
       </div>
@@ -255,7 +255,7 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-6">Role<span class="required">*</span></label>
         <div class="col-md-6 col-sm-6 col-xs-12">
                   <select name="role" class="form-control" required>
-                    <option value="">--Select role</option>
+                    <option value="">--Select role--</option>
                     <option value="0">Admin</option>
                     <option value="1">User</option>
                    </select>

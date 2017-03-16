@@ -12,11 +12,17 @@ $first 	= $row->firstname;
 $middle = $row->middlename;
 $role 	= $row->role;
 
-if($role == 0){
+switch($role){
+	case 0:
 	$firstname = '<label style="padding:10px;font-weight:bolder" class="label label-danger">Hello, Admin '.$first.' <i class="fa fa-caret-down"></i> </label>';
-}
-elseif($role == 1){
+	break;
+
+	case 1:
 	$firstname = '<label style="padding:10px;font-weight:bolder" class="label label-warning">Howdy, '.$first.' <i class="fa fa-caret-down"></i> </label>';
+	break;
+
+	default:
+	break;
 }
 
 

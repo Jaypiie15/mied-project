@@ -287,8 +287,8 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Question <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="hidden" name="accordionid" value="'.$id.'">
-                          <input id="name" class="form-control col-md-7 col-xs-12"    data-validate-length-range="6"  name="title"  value="'.$question.'" required="required" type="text">
+                          <input type="hidden" name="id" value="'.$id.'">
+                          <input id="name" class="form-control col-md-7 col-xs-12"    data-validate-length-range="6"  name="que"  value="'.$question.'" required="required" type="text">
                         </div>
                       </div>
 
@@ -298,7 +298,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Answer <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <textarea id="name" rows=5 style="resize:none" class="form-control col-md-7 col-xs-12"  data-validate-length-range="6" name="content"  required="required">'.$answer.' </textarea>
+                          <textarea id="name" rows=5 style="resize:none" class="form-control col-md-7 col-xs-12"  data-validate-length-range="6" name="ans"  required="required">'.$answer.' </textarea>
                         </div>
                       </div>
 
@@ -307,8 +307,8 @@
                         </div>
                         <div class="modal-footer">
                           <div class="btn-group">
-                            <button type="submit" name="btn-modify-faq" id="send" class="btn btn-primary"><i class="fa fa-check"></i> Save Changes</button>
-                            <button type="submit" name="btn-delete-faq" id="send" class="btn btn-danger"><i class="fa fa-remove"></i> Delete</button>
+                            <button type="submit" name="btn-modify" class="btn btn-primary"><i class="fa fa-check"></i> Save Changes</button>
+                            <button type="submit" name="btn-delete" class="btn btn-danger"><i class="fa fa-remove"></i> Delete</button>
                           </div>
                         </div>
                         </form>
