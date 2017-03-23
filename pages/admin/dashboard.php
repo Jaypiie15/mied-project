@@ -161,7 +161,7 @@
 
         <li>
           <a href="faqs.php">
-            <i class="fa fa-pencil"></i> <span>Edit FAQ's</span>
+            <i class="fa fa-pencil"></i> <span>Edit Definition of Terms</span>
 
           </a>
         </li>

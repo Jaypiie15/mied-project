@@ -265,7 +265,7 @@ if(empty($id) || empty($code)){
                             <div class="col-md-11 col-sm-6 col-xs-12">
                               <img style="width:400px;height:250px;margin:auto !important" class="img-responsive" src="../'.$image.'"> 
                               <hr>
-                              <div class="item form-group">
+                          <div class="item form-group">
                               <label class="control-label col-md-5 col-sm-3 col-xs-12" for="email">Commodity</label>
                               <div class="col-md-6 col-sm-6 col-xs-12">
                               <input type="text" name="kind" class="form-control col-md-7 col-xs-12" value="'.$kind.'">

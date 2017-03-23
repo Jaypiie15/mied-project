@@ -108,7 +108,7 @@
 
         <li>
           <a href="faq.php">
-            <i class="fa fa-info-circle"></i> <span>FAQ's</span>
+            <i class="fa fa-info-circle"></i> <span>Definition of Terms</span>
 
           </a>
         </li>

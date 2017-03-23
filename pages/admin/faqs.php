@@ -190,11 +190,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-pencil"></i> Edit FAQ's
+        <i class="fa fa-pencil"></i> Edit Definition of Terms
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="active">Edit FAQ's</li>
+        <li class="active">Edit Definition of Terms</li>
       </ol>
     </section>
 
